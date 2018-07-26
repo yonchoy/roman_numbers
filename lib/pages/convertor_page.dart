@@ -13,19 +13,19 @@ class ConvertionPage extends StatelessWidget {
 
  /// function convert decimal number to roman one
   String decimalToRoman(var number){
-        if (number>=1000) return "M"  + decimalToRoman(number - 1000);
-        if (number>=900) return "CM"  + decimalToRoman(number - 900);
-        if (number >= 500) return "D" + decimalToRoman(number - 500);
-        if (number >= 400) return "CD"+ decimalToRoman(number - 400);
-        if (number >= 100) return "C" + decimalToRoman(number - 100);
-        if (number >= 90) return "XC" + decimalToRoman(number - 90);
-        if (number >= 50) return "L"  + decimalToRoman(number - 50);
-        if (number >= 40) return "XL" + decimalToRoman(number - 40);
-        if (number >= 10) return "X"  + decimalToRoman(number - 10);
-        if (number >= 9) return "IX"  + decimalToRoman(number - 9);
-        if (number >= 5) return "V"   + decimalToRoman(number - 5);
-        if (number >= 4) return "IV"  + decimalToRoman(number - 4);
-        if (number >= 1) return "I"   + decimalToRoman(number - 1);
+        if (number >= 1000) return "M"  + decimalToRoman(number - 1000);
+        if (number >= 900) return "CM"  + decimalToRoman(number - 900);
+        if (number >= 500) return "D"   + decimalToRoman(number - 500);
+        if (number >= 400) return "CD"  + decimalToRoman(number - 400);
+        if (number >= 100) return "C"   + decimalToRoman(number - 100);
+        if (number >= 90) return "XC"   + decimalToRoman(number - 90);
+        if (number >= 50) return "L"    + decimalToRoman(number - 50);
+        if (number >= 40) return "XL"   + decimalToRoman(number - 40);
+        if (number >= 10) return "X"    + decimalToRoman(number - 10);
+        if (number >= 9) return "IX"    + decimalToRoman(number - 9);
+        if (number >= 5) return "V"     + decimalToRoman(number - 5);
+        if (number >= 4) return "IV"    + decimalToRoman(number - 4);
+        if (number >= 1) return "I"     + decimalToRoman(number - 1);
         return "";
   }
 
@@ -52,11 +52,11 @@ class ConvertionPage extends StatelessWidget {
   /// @direction determines if convertor is roman to decimal or decimal to roman
   /// @number is used to hold the number representation  
   String convertor(bool direction, var number){
-    return direction? romanToDecimal(isRomanNumber(number)?number:""):decimalToRoman(int.parse(number));
+    return direction? romanToDecimal(isRomanNumber(number)? number :"").toString():decimalToRoman(int.parse(number));
   }
 
   /// regular expression magic, check if the roman number is properly constructed
-  bool isRomanNumber(var v){
+  bool isRomanNumber(var number){
     RegExp exp = new RegExp(r"M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})");
     return exp.hasMatch(number);
   }

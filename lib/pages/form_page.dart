@@ -31,7 +31,7 @@ class _FormPageState extends State<FormPage> {
               ),
               labelText: "Decimal number",
               labelStyle: TextStyle(fontSize: 18.0)),
-          keyboardType: TextInputType.numberWithOptions(),
+          keyboardType: TextInputType.text,
           validator:(value) {
             int num = int.parse(value);
             (num<1 && num >3999)?"Please enter number between 1 and 3999":null;
@@ -43,7 +43,7 @@ class _FormPageState extends State<FormPage> {
               onPressed: () {
                 if (_formKey.currentState.validate()) {
                  Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context)=>
-                 new ConvertionPage(direction:false ,number: "1024",)));
+                 new ConvertionPage(direction:true ,number: "MCMXCIX",)));
                 }
               },
               child: Text('Submit'),

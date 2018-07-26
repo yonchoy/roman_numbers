@@ -1,8 +1,18 @@
-# roman_numbers
-
-A new Flutter project.
+# Roman Numbers
+Simple [Flutter](https://flutter.io/) project about converting and learning Roman numbers
 
 ## Getting Started
+The project should consists of two parts:
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+[v] convertor where you can convert roman numbers to decimal numbers and decimal numbers to roman numbers;
+
+[ ] quiz with three different levels for learning roman numbers , whe should use dart:math Random and the convertor from the previous step
+
+###Screenshots
+
+1. Flash ![Flash](images/flash_page.png)
+ (It is basic Flash activity to start the application)
+
+Bugs:
+[ ] fixing romanNumber validation;
+[ ] the text passing through textfield widget;
