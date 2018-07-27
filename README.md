@@ -13,6 +13,3 @@ The project should consists of two parts:
 1. Flash ![Flash](images/flash_page.png)
  (It is basic Flash activity to start the application)
 
-Bugs:
-[ ] fixing romanNumber validation;
-[ ] the text passing through textfield widget;
