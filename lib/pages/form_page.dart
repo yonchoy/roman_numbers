@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 import './convertor_page.dart';
 
 class FormPage extends StatefulWidget {
@@ -9,11 +10,19 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
   final _formKey = GlobalKey<FormState>();
+  final valueController = TextEditingController();
+  bool direction=true;
 
   @override
     void initState() {
       super.initState();
     }
+   @override
+  void dispose() {
+    valueController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +33,7 @@ class _FormPageState extends State<FormPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new TextFormField(
+
           decoration: InputDecoration(
               suffixIcon: new Icon(
                 Icons.keyboard,
@@ -32,9 +42,17 @@ class _FormPageState extends State<FormPage> {
               labelText: "Decimal number",
               labelStyle: TextStyle(fontSize: 18.0)),
           keyboardType: TextInputType.text,
+          controller: valueController,
           validator:(value) {
-            int num = int.parse(value);
-            (num<1 && num >3999)?"Please enter number between 1 and 3999":null;
+            RegExp exp = new RegExp(".*\\d+.*");
+            if(exp.hasMatch(value)){
+              int num = int.parse(value);
+              (num<1 && num >3999)?"Please enter number between 1 and 3999":null;
+              direction=false;
+            }
+            if(value.isEmpty){
+              "Please enter a Roman number";
+            }
           },
         ),
           Padding(
@@ -43,7 +61,7 @@ class _FormPageState extends State<FormPage> {
               onPressed: () {
                 if (_formKey.currentState.validate()) {
                  Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context)=>
-                 new ConvertionPage(direction:true ,number: "MCMXCIX",)));
+                 new ConvertionPage(direction:direction ,number: valueController.text)));
                 }
               },
               child: Text('Submit'),

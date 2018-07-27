@@ -52,13 +52,14 @@ class ConvertionPage extends StatelessWidget {
   /// @direction determines if convertor is roman to decimal or decimal to roman
   /// @number is used to hold the number representation  
   String convertor(bool direction, var number){
-    return direction? romanToDecimal(isRomanNumber(number)? number :"").toString():decimalToRoman(int.parse(number));
+    return direction? romanToDecimal(isRomanNumber(number)? number.toString().toUpperCase() :"").toString():decimalToRoman(int.parse(number));
   }
 
   /// regular expression magic, check if the roman number is properly constructed
   bool isRomanNumber(var number){
-    RegExp exp = new RegExp(r"M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})");
-    return exp.hasMatch(number);
+    //r"M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})"
+    RegExp exp = new RegExp("^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\$");
+    return exp.hasMatch(number.toString().toUpperCase());
   }
 
   @override
